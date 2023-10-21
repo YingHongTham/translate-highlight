@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "Translate Highlighted",
+	"version": "1.0",
+
+	"description": "Translate highlighted text",
+
+	"icons": {
+		"48": "icons/my-icon-48.png"
+	},
+	"browser_action": {
+		"default_icon": {
+			"48": "icons/my-icon-48.png"
+		},
+		"default_title": "Translate"
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["file:///*"],
+			"js": ["verbs-conj-to-inf.js", "translate-highlighted.js"],
+      "css": ["translate-highlighted.css"]
+		}
+	]
+}
