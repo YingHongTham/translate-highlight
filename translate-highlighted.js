@@ -4,11 +4,18 @@
 
 console.log(verbsConjToInf["aal"]);
 
+// convert verb to infinitive form
+// return str if already infinitive
 function VerbsConjToInfWrapper(str) {
-  if (verbsConjToInf.hasOwnProperty(str)) {
-    return verbsConjToInf[str];
-  }
-  return "";
+  if (!verbsConjToInf.hasOwnProperty(str))
+    return "";
+  return verbsConjToInf[str];
+}
+
+function MyDictDEENWrapper(str) {
+  if (!mydict.hasOwnProperty(str))
+    return -1;
+  return mydict[str];
 }
 
 const dialog = document.createElement("dialog");
@@ -55,17 +62,29 @@ function ShowText(e,str) {
 }
 
 
-window.onmouseup = (e) => {
+function OnMouseUpHandler(e) {
   const text = getHighlightedText();
-  console.log(`text: ${text}`);
-  let converted = VerbsConjToInfWrapper(text);
-  if (text === "" || converted === "") {
+  if (text === "") {
     HideText();
     return;
   }
-  ShowText(e,converted);
+  let deconjd = VerbsConjToInfWrapper(text);
+  if (deconjd === "") {
+    // verb not found, just attempt with original
+    deconjd = text;
+  }
+  let meanings = MyDictDEENWrapper(deconjd);
+  if (meanings === -1) {
+    ShowText(e,`${deconjd}: not found`);
+    return;
+  }
+  ShowText(e,`${deconjd}: ${meanings[0][0]} ${meanings[0][1]}`);
   return;
 }
+window.addEventListener('mouseup',OnMouseUpHandler,false);
+tooltiptext.addEventListener('mouseup', (e) => {
+  e.stopPropagation();
+},true);
 
 
 //================================================

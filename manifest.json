@@ -18,7 +18,11 @@
 	"content_scripts": [
 		{
 			"matches": ["file:///*"],
-			"js": ["verbs-conj-to-inf.js", "translate-highlighted.js"],
+			"js": [
+				"dicts/verbs-conj-to-inf.js",
+				"dicts/mydict-DE-EN.js",
+				"translate-highlighted.js"
+			],
       "css": ["translate-highlighted.css"]
 		}
 	]
