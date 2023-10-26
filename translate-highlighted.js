@@ -37,6 +37,8 @@ tooltiptext.style.position = "absolute";
 tooltiptext.style.display = "none";
 document.body.appendChild(tooltiptext);
 
+//TODO add buttons to cycle through different meanings
+
 
 const getHighlightedText = () => {
   if (document.getSelection) {
@@ -84,7 +86,34 @@ function OnMouseUpHandler(e) {
 window.addEventListener('mouseup',OnMouseUpHandler,false);
 tooltiptext.addEventListener('mouseup', (e) => {
   e.stopPropagation();
+  // TODO cycle through meanings
 },true);
+
+
+//========================================================
+// testing message sending
+
+//window.addEventListener("click", notifyExtension);
+//
+//function notifyExtension(e) {
+//  browser.runtime.sendMessage({ data: "zarudo" });
+//};
+
+
+// TODO: test implement
+//https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#connection-based_messaging
+
+// bad doesn't work?
+//function handleResponse(message) {
+//  console.log(`background script sent a response: ${message.response}`);
+//}
+//
+//function handleError(error) {
+//  console.log(`Error: ${error}`);
+//}
+//
+//browser.runtime.sendMessage({ content : "zarudo" })
+//  .then(handleResponse, handleError);
 
 
 //================================================

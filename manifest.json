@@ -25,5 +25,9 @@
 			],
       "css": ["translate-highlighted.css"]
 		}
-	]
+	],
+	"background": {
+		"scripts": ["background-script.js"],
+		"persistent": false
+	}
 }
